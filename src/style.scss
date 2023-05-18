@@ -1,0 +1,535 @@
+$breakpoint-extra-small: 300px;
+$breakpoint-small: 567px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-extra-large: 1200px;
+
+@mixin extra-small {
+    @media (min-width: #{$breakpoint-extra-small}) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (max-width: #{$breakpoint-small}) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (max-width: #{$breakpoint-medium}) {
+        @content;
+    }
+}
+
+
+@mixin large {
+    @media (max-width: #{$breakpoint-large}) {
+        @content;
+    }
+}
+
+@mixin extra-large {
+    @media (max-width: #{$breakpoint-extra-large}) {
+        @content;
+    }
+}
+
+$ownerMessageColor : #B8A4E4;
+$messageColor : #080912;
+$secondaryColor: #272727;
+$primaryColor: #121212;
+$grayColor: rgb(73, 64, 64);
+$smallTextColor: rgba(105, 98, 98, 0.899);
+$textColor: rgb(174, 169, 169);
+$lightColor: rgb(210, 210, 210);
+
+.formContainer {
+    background-color: $primaryColor;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .formWrapper {
+        background-color: $lightColor;
+        padding: 20px 60px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid $ownerMessageColor;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            input {
+                width: 15rem;
+                padding: 15px;
+                border: none;
+                border-bottom: 1px solid #a7bcff;
+                border-radius: 6px;
+
+                &::placeholder {
+                    color: rgb(57, 100, 127);
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            button {
+                background-color: #7b96ec;
+                color: white;
+                padding: 10px;
+                border-radius: 6px;
+                border: none;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            label {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: #8da4f1;
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            img {
+                height: 2rem;
+                width: 2rem;
+            }
+
+            span {
+                width: 15rem;
+            }
+        }
+
+        .logo {
+            display: inline-flex;
+            font-family: "Impact", sans-serif;
+            background: url("./images/logoImg.jpg");
+            font-size: 3rem;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: #5b728a54;
+            animation: move 10s linear infinite;
+            letter-spacing: .1rem;
+        }
+
+        @keyframes move {
+            from {
+                background-position: 0 80%;
+            }
+
+            to {
+                background-position: 100% 50%;
+            }
+        }
+
+        .title {
+            color: #5d5b8d;
+            font-size: 30px;
+        }
+
+        p {
+            color: #5d5b8d;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+}
+
+body {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $ownerMessageColor;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+.home {
+    color: $smallTextColor;
+    background-color: $primaryColor;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .navItems {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            font-size: 25px;
+            font-weight: 600;
+            color: $textColor;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            border-radius: 50%;
+            height: 2.2rem;
+            width: 2.2rem;
+            object-fit: cover;
+        }
+
+        .logout {
+            cursor: pointer;
+            height: 1.5rem;
+            width: 1.5rem;
+            color: $ownerMessageColor;
+        }
+    }
+
+    .container {
+        overflow: hidden;
+        flex: 1;
+        display: flex;
+
+        .infoStatement {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $ownerMessageColor;
+        }
+    }
+
+    .sidebar {
+        flex: 1;
+
+        @include small {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 0;
+        }
+
+        .search {
+            margin-top: -0.2rem;
+
+            @include small {
+                text-align: center;
+            }
+
+            .searchForm {
+                display: flex;
+                align-items: center;
+                outline: 3px solid $secondaryColor;
+                margin: 1rem;
+                padding: 10px;
+                border-radius: 4px;
+
+                input {
+                    width: 19rem;
+                    background-color: transparent;
+                    border: none;
+                    color: $lightColor;
+                    outline: none;
+
+                    &::placeholder {
+                        color: $smallTextColor;
+                    }
+
+                    @include large {
+                        width: 10rem;
+                        transition: width 0.5s ease;
+                    }
+
+                    @include medium {
+                        width: 8rem;
+                        transition: width 0.5s ease;
+                    }
+
+                    @include small {
+                        width: 2rem;
+                        transition: width 0.5s ease;
+                    }
+                }
+
+                img {
+                    height: 1rem;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .userChat {
+            margin: 0rem 1.5rem;
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: $textColor;
+            cursor: pointer;
+
+            @include small {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 0;
+            }
+
+            @include medium {
+                margin: 0.3rem;
+            }
+
+            &:hover {
+                background-color: $messageColor;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .userChatInfo {
+                span {
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+
+                p {
+                    font-size: 14px;
+                    color: $smallTextColor;
+                    margin: 0;
+                }
+
+                @include small {
+                    span {
+                        font-size: 14px;
+                        display: inline-block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+
+                    p {
+                        font-size: 11px;
+                    }
+                }
+
+                @include small {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.chat {
+    border-radius: 12px 0px 0px 0px;
+    flex: 3;
+    background-color: $secondaryColor;
+    overflow: hidden;
+    padding: 0px 10px 0px 0px;
+
+    @include small {
+        border-radius: 12px 12px 0px 0px;
+    }
+
+    .chatInfo {
+        background-color: $messageColor;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        justify-content: space-between;
+        margin: 10px 0px 0px 10px;
+        border-radius: 6px 6px 0px 0px;
+        border: 1px solid $ownerMessageColor;
+
+        .rightMenu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            span{
+                color: $lightColor;
+            }
+        }
+
+
+        .chatIcons {
+            display: flex;
+            gap: 10px;
+
+            .icons {
+                cursor: pointer;
+                height: 1.3rem;
+                width: 1.3rem;
+                color: $ownerMessageColor;
+            }
+        }
+    }
+
+    .messages {
+        height: calc(100% - 105px);
+        padding: 0px 0px 0px 6px;
+        overflow-y: scroll;
+
+        .message {
+            display: flex;
+
+            .messageInfo {
+                min-width: 4rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: $grayColor;
+                font-weight: 300;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                span {
+                    color: $smallTextColor;
+                }
+
+                @include small {
+                    span {
+                        font-size: 0.8rem;
+                    }
+                }
+
+                @include medium {
+                    span {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .messageContent {
+                max-width: 80%;
+                display: flex;
+                flex-direction: column;
+
+                p {
+                    background-color: $messageColor;
+                    padding: 10px 20px;
+                    border-radius: 0px 10px 10px 10px;
+                    max-width: max-content;
+                }
+
+                img {
+                    width: 40%;
+                    border-radius: 12px 0px 12px 12px;
+                    border: 4px solid $ownerMessageColor;
+                    margin-top: 0.5rem;
+                }
+            }
+
+            &.owner {
+                flex-direction: row-reverse;
+
+                .messageContent {
+                    align-items: flex-end;
+
+                    p {
+                        background-color: $ownerMessageColor;
+                        color: $primaryColor;
+                        border-radius: 10px 0px 10px 10px;
+                    }
+                }
+
+            }
+        }
+    }
+
+    .input {
+        height: 50px;
+        margin-left: 10px;
+
+        .sendBar {
+            overflow: hidden;
+            border: 1px solid $ownerMessageColor;
+            background-color: $messageColor;
+            height: 2.5rem;
+            border-radius: 0px 0px 6px 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            input {
+                background-color: transparent;
+                border: none;
+                color: $lightColor;
+                outline: none;
+                width: 90%;
+                margin: 0px 10px;
+
+                &::placeholder {
+                    color: $smallTextColor;
+                }
+            }
+
+            .send {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+
+                .icon {
+                    cursor: pointer;
+                    font-size: 1.3rem;
+                }
+
+                .InputIcon {
+                    cursor: pointer;
+                    height: 1.1rem;
+                    width: 1.1rem;
+                    color: $ownerMessageColor;
+                }
+
+                button {
+                    background-color: $messageColor;
+                    border: none;
+                    height: 2.5rem;
+                    width: 2.5rem;
+                    cursor: pointer;
+
+
+                    .sendBtn {
+                        cursor: pointer;
+                        color: $ownerMessageColor;
+                        font-size: x-large;
+                    }
+                }
+            }
+        }
+    }
+}
