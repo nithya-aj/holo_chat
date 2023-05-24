@@ -2,8 +2,8 @@
 
 A real-time chat application built with React.js and Firebase.
 
-![UI1 Screenshot](src/images/ui1.jpg)
-![UI2 Screenshot](src/images/ui2.jpg)
+![UI1 Screenshot](src/images/ui1.png)
+![UI2 Screenshot](src/images/ui2.png)
 
 ## Features 
 
